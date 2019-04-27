@@ -184,6 +184,7 @@ void MPFA_controller::MPFA() {
 			//argos::LOG << "SURVEYING" << std::endl;
 			//SetIsHeadingToNest(false);
 			Surveying();
+			SetClosestNest();
 			break;
 	    case DEPOT_IDLING:
 	    //argos::LOG<<"DEPOT_IDLING"<<endl;
@@ -563,7 +564,7 @@ void MPFA_controller::Searching() {
 	}
 
 	// Food has been found, change state to RETURNING and go to the nest
-	//else {
+	//else {move
 	//	SetTarget(LoopFunctions->NestPosition);
 	//	MPFA_state = RETURNING;
 	//}
@@ -789,7 +790,7 @@ void MPFA_controller::SetHoldingFood() {
           }
       }
    
-      // We picked up food. Update the food list minus what we picked up.
+      // We picked up food. Update the food list minus what we picked up.move
       if(IsHoldingFood()) {
          //SetClosestNest(); //it does not update the closest nest. It always returns to the original closest nest. 
 	 //SetIsHeadingToNest(true);
@@ -1079,11 +1080,15 @@ void MPFA_controller::UpdateTargetRayList() {
 void MPFA_controller::SetClosestNest(){//qilu 07/26/2016
     Nest* NewClosestNest;
     CVector2 robotPos = GetPosition();
+    cerr << "FINDING CLOSEST NEST" << "\n";
     Real minSquaredLen = (LoopFunctions->Nests[0].GetLocation()-robotPos).SquareLength();
     size_t minIdex =0;
     Real squaredLen;
+	cout<<"NEST SIZE "<< LoopFunctions->Nests.size();
     for(size_t i=1; i<LoopFunctions->Nests.size(); i++){
+	cerr << i;	
         squaredLen = (LoopFunctions->Nests[i].GetLocation()-robotPos).SquareLength();
+	cerr << ": " << squaredLen << "\n";
         if (squaredLen < minSquaredLen) {
             minSquaredLen = squaredLen;
             minIdex = i;

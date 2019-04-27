@@ -19,7 +19,6 @@ class MPFA_loop_functions : public argos::CLoopFunctions
 	public:
 
 		MPFA_loop_functions();
-	   
 		void Init(argos::TConfigurationNode &t_tree);
 		void Reset();
 		void PreStep();

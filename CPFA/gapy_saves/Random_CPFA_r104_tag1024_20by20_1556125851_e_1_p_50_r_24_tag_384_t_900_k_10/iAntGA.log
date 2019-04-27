@@ -1,0 +1,105 @@
+INFO:root:Starting generation: 0
+INFO:root:Seeds for generation: [464861855, 2305441244, 1608188758, 4126145854, 53754370, 1635703756, 2640425746, 3018474565, 4005209064, 1333284870]
+INFO:root:pop 0 at test 0 with seed 464861855
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 1 with seed 2305441244
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 2 with seed 1608188758
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 3 with seed 4126145854
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 4 with seed 53754370
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 5 with seed 1635703756
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 6 with seed 2640425746
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 7 with seed 3018474565
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 8 with seed 4005209064
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 9 with seed 1333284870
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 0 with seed 464861855
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 1 with seed 2305441244
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 2 with seed 1608188758
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 3 with seed 4126145854
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 4 with seed 53754370
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 5 with seed 1635703756
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 6 with seed 2640425746
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 7 with seed 3018474565
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 8 with seed 4005209064
+ERROR:root:Argos failed test
+INFO:root:pop 1 at test 9 with seed 1333284870
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 0 with seed 464861855
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 1 with seed 2305441244
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 2 with seed 1608188758
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 3 with seed 4126145854
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 4 with seed 53754370
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 5 with seed 1635703756
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 6 with seed 2640425746
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 7 with seed 3018474565
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 8 with seed 4005209064
+ERROR:root:Argos failed test
+INFO:root:pop 2 at test 9 with seed 1333284870
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 0 with seed 464861855
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 1 with seed 2305441244
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 2 with seed 1608188758
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 3 with seed 4126145854
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 4 with seed 53754370
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 5 with seed 1635703756
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 6 with seed 2640425746
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 7 with seed 3018474565
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 8 with seed 4005209064
+ERROR:root:Argos failed test
+INFO:root:pop 3 at test 9 with seed 1333284870
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 0 with seed 464861855
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 1 with seed 2305441244
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 2 with seed 1608188758
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 3 with seed 4126145854
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 4 with seed 53754370
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 5 with seed 1635703756
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 6 with seed 2640425746
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 7 with seed 3018474565
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 8 with seed 4005209064
+ERROR:root:Argos failed test
+INFO:root:pop 4 at test 9 with seed 1333284870
+ERROR:root:Argos failed test
+INFO:root:pop 5 at test 0 with seed 464861855
+ERROR:root:Argos failed test
+INFO:root:pop 5 at test 1 with seed 2305441244

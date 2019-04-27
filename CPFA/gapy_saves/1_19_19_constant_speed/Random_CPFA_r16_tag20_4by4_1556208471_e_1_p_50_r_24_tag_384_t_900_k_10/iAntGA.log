@@ -1,0 +1,16 @@
+INFO:root:Starting generation: 0
+INFO:root:Seeds for generation: [1184189312, 297840602, 323897582, 4071302381, 684870861, 201512213, 2347529634, 1578738848, 2463761446, 1067095510]
+INFO:root:pop 0 at test 0 with seed 1184189312
+INFO:root:Starting generation: 0
+INFO:root:Seeds for generation: [1724318032, 1280302149, 2869753112, 2613313073, 1032618854, 3349830966, 1859953951, 149403374, 363021531, 3282798705]
+INFO:root:pop 0 at test 0 with seed 1724318032
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 1 with seed 1280302149
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 2 with seed 2869753112
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 3 with seed 2613313073
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 4 with seed 1032618854
+ERROR:root:Argos failed test
+INFO:root:pop 0 at test 5 with seed 3349830966

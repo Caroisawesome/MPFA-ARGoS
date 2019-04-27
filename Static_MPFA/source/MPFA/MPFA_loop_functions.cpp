@@ -100,14 +100,17 @@ void MPFA_loop_functions::Init(argos::TConfigurationNode &node) {
     for(int i=0; i<1024; i++)
     {
 	    PosStrRegionNest = "NestPosition_"+ to_string(i);
-	    if(argos::NodeAttributeExists(settings_node, PosStrRegionNest))
+	    cout<<"I="<<i<<", ";
+		if(argos::NodeAttributeExists(settings_node, PosStrRegionNest))
 	    {
-		argos::GetNodeAttribute(settings_node, PosStrRegionNest, NestPosition);
-		Nests[i] = Nest(NestPosition);
-        	Nests[i].SetNestIdx(i);
-    
+			argos::GetNodeAttribute(settings_node, PosStrRegionNest, NestPosition);
+			cout<<" THIS IS A TEST ";
+			Nests[i] = Nest(NestPosition);
+		    Nests[i].SetNestIdx(i);
+		
          }// end if
      }//end for
+
      
      float regionWidth = ArenaWidth/sqrt((Nests.size()-1));
      argos::LOG<<"regionWidth="<<regionWidth<<endl;
@@ -198,7 +201,7 @@ void MPFA_loop_functions::Reset() {
 	   if(VariableFoodPlacement == 0) {
 		      RNG->Reset();
 	   }
-
+	cout<<"RESET !!!";
     GetSpace().Reset();
     GetSpace().GetFloorEntity().Reset();
     MaxSimCounter = SimCounter;
@@ -230,6 +233,14 @@ void MPFA_loop_functions::Reset() {
 }
 
 void MPFA_loop_functions::PreStep() {
+
+	cout<<"Pre-Ste loop function !!!";
+
+		Nests[18] = Nest(argos::CVector2(1.7, 1.3));
+		Nests[18].SetNestIdx(18);
+        Nests[18].SetDeliveryCapacity(4);
+	    Nests[18].SetNestRadius(2.4, NestRadius, ActualArenaWidth, Nests.size());
+		
     SimTime++;
     curr_time_in_minutes = getSimTimeInSeconds()/60.0;
     if(curr_time_in_minutes - last_time_in_minutes==1){
@@ -270,7 +281,7 @@ bool MPFA_loop_functions::IsExperimentFinished() {
         //set to collected 88% food and then stop
          if(score >= NumDistributedFood){
 		isFinished = true;
-		}  
+		}
 
 	if(isFinished == true && MaxSimCounter > 1) {
 		size_t newSimCounter = SimCounter + 1;
@@ -388,21 +399,27 @@ void MPFA_loop_functions::UpdatePheromoneList() {
 
 	argos::Real t = GetSpace().GetSimulationClock() / GetSimulator().GetPhysicsEngine("dyn2d").GetInverseSimulationClockTick();
 
- for(size_t n=0; n<Nests.size();n++){
-	    for(size_t i = 0; i < Nests[n].PheromoneList.size(); i++) {
+	 for(size_t n=0; n<Nests.size();n++){
+		 for(size_t i = 0; i < Nests[n].PheromoneList.size(); i++) {
 
-		        //Nests[n].PheromoneList[i].Update(t);
-                Nests[n].PheromoneList[i].Update(getSimTimeInSeconds());//qilu 09/24/2016 let it decays in every second
+						//Nests[n].PheromoneList[i].Update(t);
+		            Nests[n].PheromoneList[i].Update(getSimTimeInSeconds());//qilu 09/24/2016 let it decays in every second
 
-		        if(Nests[n].PheromoneList[i].IsActive()) {
-			          new_p_list.push_back(Nests[n].PheromoneList[i]);
-		        }
-      }
-      Nests[n].PheromoneList.clear();
-     	Nests[n].PheromoneList = new_p_list;
-      new_p_list.clear();//qilu 09/08/2016
- }
+				    if(Nests[n].PheromoneList[i].IsActive()) {
+					      new_p_list.push_back(Nests[n].PheromoneList[i]);
+				    }
+		  }
+		  Nests[n].PheromoneList.clear();
+		 	Nests[n].PheromoneList = new_p_list;
+		  new_p_list.clear();//qilu 09/08/2016
+
+	 }
+
+	if ((int)(GetSpace().GetSimulationClock()) == 5) {
+		
+	}
 }
+
 void MPFA_loop_functions::SetFoodDistribution() {
 	switch(FoodDistribution) {
 		case 0:
