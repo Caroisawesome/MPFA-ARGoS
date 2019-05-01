@@ -55,20 +55,52 @@ class iAntGA(object):
         self.not_evolved_idx = [-1]*self.pop_size #qilu 03/27/2016 check whether a population is from previous generation and is not modified
         self.not_evolved_count = [0]*self.pop_size #qilu 04/02
         self.prev_not_evolved_count = [0]*self.pop_size #qilu 04/02
-        self.prev_fitness = np.zeros(pop_size) #qilu 03/27/2016
+        self.prev_fitness = np.zeros(pop_size) #qilu 03/27/2016        
+
         
         name_and_extension = xml_file.split(".")
         XML_FILE_NAME = name_and_extension[0]
         for _ in xrange(pop_size):
-            self.population.append(argos_util.uniform_rand_argos_xml(xml_file, robots, length, system))
+            pops = []
+            xml1 = argos_util.uniform_rand_argos_xml(xml_file, robots, length, system)
+            xml2 = xml1
+            xml3 = xml1
+            
+            framework_CPFA = xml2.find("loop_functions").find("settings")
+            framework_CPFA.attrib.update({"FoodDistribution": "1"})
+
+                        
+            framework_CPFA = xml3.find("loop_functions").find("settings")
+            framework_CPFA.attrib.update({"FoodDistribution": "2"})
+
+            
+            pops.append(xml1)
+            pops.append(xml2)
+            pops.append(xml3)
+            self.population.append(pops)
+
+            
         #dirstring = str(self.starttime) + "_e_" + str(elites) + "_p_" + str(pop_size) + "_r_" + str(robots) + "_t_" + \
         dirstring = XML_FILE_NAME +"_" + str(self.starttime) + "_e_" + str(elites) + "_p_" + str(pop_size) + "_r_" + \
         str(robots) +"_tag_"+str(tags)+ "_t_" + str(length) + "_k_" + str(tests_per_gen)
+
+
+        # name_and_extension = xml_file2.split(".")
+        # XML_FILE_NAME2 = name_and_extension[0]
+        # for _ in xrange(pop_size):
+        #     self.population.append(argos_util.uniform_rand_argos_xml(xml_file2, robots, length, system))
+        # #dirstring = str(self.starttime) + "_e_" + str(elites) + "_p_" + str(pop_size) + "_r_" + str(robots) + "_t_" + \
+        # dirstring = XML_FILE_NAME +"_" + str(self.starttime) + "_e_" + str(elites) + "_p_" + str(pop_size) + "_r_" + \
+        # str(robots) +"_tag_"+str(tags)+ "_t_" + str(length) + "_k_" + str(tests_per_gen)
+
+
         self.save_dir = os.path.join("gapy_saves", dirstring)
+
         mkdir_p(self.save_dir)
         logging.basicConfig(filename=os.path.join(self.save_dir,'iAntGA.log'),level=logging.DEBUG)
         
     def test_fitness(self, argos_xml, seed):
+        print("XML FILE",argos_xml)
         argos_util.set_seed(argos_xml, seed)
         xml_str = etree.tostring(argos_xml)
         cwd = os.getcwd()
@@ -104,17 +136,19 @@ class iAntGA(object):
         self.fitness = np.zeros(pop_size) #reset it
         seeds = [np.random.randint(2 ** 32) for _ in range(self.tests_per_gen)]
         logging.info("Seeds for generation: " + str(seeds))
-        for i, p in enumerate(self.population):
-            print "Gen: "+str(self.current_gen)+'; Population: '+str(i+1)
-            for test_id in xrange(self.tests_per_gen):
-                seed = seeds[test_id]
-                logging.info("pop %d at test %d with seed %d", i, test_id, seed)
-                if self.not_evolved_idx[i] == -1 or self.not_evolved_count[i] > 3:
-                    self.not_evolved_count[i] =0;    
-                    self.fitness[i] += self.test_fitness(p, seed)
-                else: #qilu 03/27/2016 avoid recompute
-		    self.fitness[i] += self.prev_fitness[self.not_evolved_idx[i]] 
-	            logging.info("partial fitness = %d", self.prev_fitness[self.not_evolved_idx[i]])
+        
+        for i, pop in enumerate(self.population):
+            for p in pop:
+                print "Gen: "+str(self.current_gen)+'; Population: '+str(i+1)
+                for test_id in xrange(self.tests_per_gen):
+                    seed = seeds[test_id]
+                    logging.info("pop %d at test %d with seed %d", i, test_id, seed)
+                    if self.not_evolved_idx[i] == -1 or self.not_evolved_count[i] > 3:
+                        self.not_evolved_count[i] =0;    
+                        self.fitness[i] += self.test_fitness(p, seed)
+                    else: #qilu 03/27/2016 avoid recompute
+		        self.fitness[i] += self.prev_fitness[self.not_evolved_idx[i]] 
+	                logging.info("partial fitness = %d", self.prev_fitness[self.not_evolved_idx[i]])
         # use average fitness as fitness
         for i in xrange(len(self.fitness)):
             logging.info("pop %d total fitness = %g", i, self.fitness[i])
@@ -127,6 +161,13 @@ class iAntGA(object):
         fitpop = sorted(zip(self.fitness, self.population, self.not_evolved_count), reverse=True) #qilu 04/02 add not_evolved_count  
         self.fitness, self.population, self.not_evolved_count = map(list, zip(*fitpop))
 
+        self.population2 = []
+        for l in self.population:
+            self.population2.append(l[0])
+
+        self.population = self.population2
+         
+        
         self.save_population(seed)
 
         self.prev_population = copy.deepcopy(self.population)
@@ -193,6 +234,23 @@ class iAntGA(object):
                 del self.not_evolved_idx[-1]
                 del self.not_evolved_count[-1]
                 count -=1
+
+        population2 = []
+        for p in self.population:
+            pops = []
+            p2 = p
+            p3 = p
+            framework_CPFA = p2.find("loop_functions").find("settings")
+            framework_CPFA.attrib.update({"FoodDistribution": "1"})
+            framework_CPFA = p3.find("loop_functions").find("settings")
+            framework_CPFA.attrib.update({"FoodDistribution": "2"})
+
+            pops.append(p2)
+            pops.append(p)
+            pops.append(p3)
+            population2.append(pops)
+
+        self.population = population2
         self.current_gen += 1
 
     def check_termination(self):
@@ -235,16 +293,17 @@ class iAntGA(object):
         mkdir_p(save_dir)
         filename = "gen_%d.gapy" % self.current_gen
         #population_data = []
+            
         for f, p in zip(self.fitness, self.population):
             data = copy.deepcopy(argos_util.get_parameters(p)) 
             #data2= copy.deepcopy(argos_util.get_controller_params(p)) #qilu 07/25
             if 'PrintFinalScore' in data: 
                 del data['PrintFinalScore']
-            data["fitness"] = f
-            data["seed"] = seed
-            self.population_data.append(data)
-            #population_data2.append(data2)
-            #print data
+                data["fitness"] = f
+                data["seed"] = seed
+                self.population_data.append(data)
+                #population_data2.append(data2)
+                #print data
         data_keys = argos_util.PARAMETER_LIMITS.keys()
         data_keys.append("fitness")
         data_keys.append("seed")
@@ -263,7 +322,7 @@ class iAntGA(object):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='GA for argos')
-    parser.add_argument('-f', '--file', action='store', dest='xml_file')
+    parser.add_argument('-f1', '--file1', action='store', dest='xml_file')
     parser.add_argument('-s', '--system', action='store', dest='system')
     parser.add_argument('-r', '--robots', action='store', dest='robots', type=int)
     parser.add_argument('-m', '--mut_rate', action='store', dest='mut_rate', type=float)
@@ -277,7 +336,7 @@ if __name__ == "__main__":
     gens = 100
     elites = 1
     mut_rate = 0.05
-    robots = 24  #robots = 16
+    robots = 1  #robots = 16
     tags=384 #qilu 03/26 for naming the output directory 
     
     system = "linux"
@@ -300,6 +359,8 @@ if __name__ == "__main__":
     if args.xml_file:
 		xml_file = args.xml_file
 		print "The input file: "+xml_file
+
+
     if args.pop_size:
         pop_size = args.pop_size
 

@@ -1,0 +1,5 @@
+INFO:root:Starting generation: 0
+INFO:root:Seeds for generation: [4073207567, 1431859874, 4234381418, 2204536871, 105733843, 2370527231, 2869473208, 3831500111, 1275228317, 515812445]
+INFO:root:pop 0 at test 0 with seed 4073207567
+INFO:root:partial fitness = 50.000000
+INFO:root:pop 0 at test 1 with seed 1431859874

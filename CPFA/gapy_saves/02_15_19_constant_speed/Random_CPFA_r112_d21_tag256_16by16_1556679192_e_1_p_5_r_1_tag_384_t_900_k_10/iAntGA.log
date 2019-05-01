@@ -1,0 +1,21 @@
+INFO:root:Starting generation: 0
+INFO:root:Seeds for generation: [3371572763, 2107221062, 3962709544, 1495210137, 1826391929, 1756868061, 3610095413, 146778702, 2277918285, 748479303]
+INFO:root:pop 0 at test 0 with seed 3371572763
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 1 with seed 2107221062
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 2 with seed 3962709544
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 3 with seed 1495210137
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 4 with seed 1826391929
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 5 with seed 1756868061
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 6 with seed 3610095413
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 7 with seed 146778702
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 8 with seed 2277918285
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 9 with seed 748479303

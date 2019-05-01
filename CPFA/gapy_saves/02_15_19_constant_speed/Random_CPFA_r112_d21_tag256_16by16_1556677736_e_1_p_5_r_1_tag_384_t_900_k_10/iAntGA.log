@@ -1,0 +1,39 @@
+INFO:root:Starting generation: 0
+INFO:root:Seeds for generation: [1221652480, 4135561273, 3495112501, 1954709802, 4069232361, 2279986997, 2394900139, 320032639, 2053057966, 2896907671]
+INFO:root:pop 0 at test 0 with seed 1221652480
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 1 with seed 4135561273
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 2 with seed 3495112501
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 3 with seed 1954709802
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 4 with seed 4069232361
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 5 with seed 2279986997
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 6 with seed 2394900139
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 7 with seed 320032639
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 8 with seed 2053057966
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 9 with seed 2896907671
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 0 with seed 1221652480
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 1 with seed 4135561273
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 2 with seed 3495112501
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 3 with seed 1954709802
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 4 with seed 4069232361
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 5 with seed 2279986997
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 6 with seed 2394900139
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 7 with seed 320032639
+INFO:root:partial fitness = 0.000000
+INFO:root:pop 0 at test 8 with seed 2053057966
